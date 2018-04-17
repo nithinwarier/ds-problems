@@ -64,10 +64,6 @@ public class LinkedList2 {
 
     private static void printLastNode(Node head) {
         if (head == null) return;
-        if (head.next == null) {
-            System.out.println("LastNode: "+head.data);
-            return;
-        }
         
         Node fast = head;
         Node slow = head;
