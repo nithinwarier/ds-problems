@@ -192,20 +192,20 @@ public class LinkedList2 {
      * Check whether the linkedList hasp loop through slow & fast pointer
      */
     private static boolean hasLoop(Node head) {
-      Node slow, fast; 
-      slow = fast = head; 
-      while(true) {
-        slow = slow.next; 
-        if(fast.next != null)
-            fast = fast.next.next; 
-        else
-            return false;  
-
-        if(slow == null || fast == null) 
-            return false;
-
-        if(slow == fast) 
-            return true;
-    }
-
+      if (head == null) return false;
+        
+      Node slow = head;
+      Node fast = head;
+        
+      while (slow != null && fast != null && fast.next != null) {
+          slow = slow.next;
+          fast = fast.next.next;
+          
+          if (slow == fast) {
+              return true;
+          }
+      }
+      
+      return false;
+    }   
 }
