@@ -64,22 +64,22 @@ public class LinkedList2 {
 
     private static void printLastNode(Node head) {
         if (head == null) return;
-        if (head.next == null) {
-            System.out.println("LastNode: "+head.data);
-            return;
+        
+        Node fast = head;
+        Node slow = head;
+        Node mid = head;
+        
+        // here, we are not travelling the enitr linkedList to find the lastNode
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            mid = fast.next;
+            fast = fast.next.next;
         }
-
-        Node fastNode = head.next;
-
-        while (fastNode != null && fastNode.next != null) {
-            if (fastNode != null && fastNode.next == null) {
-                System.out.println("LastNode: " + fastNode.next.data);
-            }
-            fastNode = fastNode.next.next;
-        }
-
-        if (fastNode != null) {
-            System.out.println("LastNode: " + fastNode.data);
+        
+        if (fast != null) {
+            System.out.println("LastNode: " + fast.data);
+        } else if (mid != null) {
+            System.out.println("LastNode: " + mid.data);
         }
     }
 
@@ -187,5 +187,25 @@ public class LinkedList2 {
         }
 
     }
-
+    
+    /**
+     * Check whether the linkedList hasp loop through slow & fast pointer
+     */
+    private static boolean hasLoop(Node head) {
+      if (head == null) return false;
+        
+      Node slow = head;
+      Node fast = head;
+        
+      while (slow != null && fast != null && fast.next != null) {
+          slow = slow.next;
+          fast = fast.next.next;
+          
+          if (slow == fast) {
+              return true;
+          }
+      }
+      
+      return false;
+    }   
 }

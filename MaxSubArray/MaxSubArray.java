@@ -22,8 +22,8 @@ public class MaxSubArray {
             sum +=  arr[i];
             maxSum = Math.max(maxSum, sum);
 
-            if (sum < 0) {
-                sum = 0;
+            if (maxSum < 0) {
+                maxSum = 0;
             }
         }
 
