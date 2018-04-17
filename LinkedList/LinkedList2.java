@@ -73,6 +73,7 @@ public class LinkedList2 {
         Node slow = head;
         Node mid = head;
         
+        // here, we are not travelling the enitr linkedList to find the lastNode
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             mid = fast.next;
