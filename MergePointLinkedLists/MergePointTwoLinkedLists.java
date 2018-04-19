@@ -99,14 +99,14 @@ public class MergePointTwoLinkedLists {
     public static int mergePointTwoLinkedListsImprovedBruteForce(Node A, Node B) {
         int n = length(A);
         int m = length(B);
-        Set<Node> nodes = new TreeSet<>();
+        Set<Integer> nodes = new TreeSet<>();
         for (int i=0;i<m;i++) {
-            nodes.add(B);
+            nodes.add(B.data);
             B = B.next;
         }
 
         for (int i=0;i<n; i++) {
-            if (nodes.contains(A)) {
+            if (nodes.contains(A.data)) {
                 return A.data;
             }
 
@@ -115,7 +115,4 @@ public class MergePointTwoLinkedLists {
 
         return -1;
     }
-
-
-
 }
