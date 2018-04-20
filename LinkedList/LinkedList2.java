@@ -208,4 +208,18 @@ public class LinkedList2 {
       
       return false;
     }   
+    
+    private static boolean detectLoopAlternativeWay(Node a) {
+        HashSet<Node> set = new HashSet<>();
+        while (a != null) {
+          if (set.contains(a)) {
+              return a;
+          }
+            
+          set.add(a);
+          a = a.next;  
+      }
+      
+      return null;
+    }   
 }
