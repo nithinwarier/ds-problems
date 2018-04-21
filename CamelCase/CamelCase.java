@@ -6,6 +6,9 @@ public class CamelCase {
         System.out.println(camelCase("nithinWarrierIsACoolPerson"));
     }
 
+    // count number of words in the string, words 
+    // are separated by camel case, 
+    // starting word starts with small letter
     public static int camelCase(String str) {
         StringBuilder builder = new StringBuilder(str);
         int count = 1;
