@@ -1,0 +1,87 @@
+package com.androidians.sample.trees;
+
+import android.support.annotation.NonNull;
+
+public class BinaryTreeTraversal {
+
+    static class BTNode implements Comparable {
+        int data;
+        BinaryTree.BTNode left;
+        BinaryTree.BTNode right;
+
+        BTNode(int data) {
+            this.data = data;
+            left = null;
+            right = null;
+        }
+
+        @Override
+        public int compareTo(@NonNull Object o) {
+            return 0;
+        }
+    }
+
+    static BinaryTree.BTNode getNewNode(int data) {
+        return new BinaryTree.BTNode(data);
+    }
+
+    static BinaryTree.BTNode insert(BinaryTree.BTNode root, int data) {
+        if (root == null) {
+            root = getNewNode(data);
+            return root;
+        } else if (data <= root.data) {
+            root.left = insert(root.left, data);
+        } else {
+            root.right = insert(root.right, data);
+        }
+
+        return root;
+    }
+
+    static void preOrderTraversal(BinaryTree.BTNode root) {
+        if (root == null) return;
+
+        System.out.print("\t"+root.data);
+        preOrderTraversal(root.left);
+        preOrderTraversal(root.right);
+    }
+
+    static void inOrderTraversal(BinaryTree.BTNode root) {
+        if (root == null) return;
+
+        inOrderTraversal(root.left);
+        System.out.print("\t"+root.data);
+        inOrderTraversal(root.right);
+    }
+
+    static void postOrderTraversal(BinaryTree.BTNode root) {
+        if (root == null) return;
+
+        postOrderTraversal(root.left);
+        postOrderTraversal(root.right);
+        System.out.print("\t"+root.data);
+    }
+
+    public static void main(String[] args) {
+        BinaryTree.BTNode root = insert(null, 10);
+        insert(root, 5);
+        insert(root, 3);
+        insert(root, 8);
+
+        insert(root, 22);
+        insert(root, 17);
+        insert(root, 24);
+
+        System.out.println();
+        System.out.println("Pre order traversal ");
+        preOrderTraversal(root);
+        System.out.println();
+        System.out.println("In order traversal");
+        inOrderTraversal(root);
+        System.out.println();
+        System.out.println("Post order traversal");
+        postOrderTraversal(root);
+        System.out.println();
+    }
+
+}
