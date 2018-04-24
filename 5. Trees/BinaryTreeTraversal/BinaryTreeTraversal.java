@@ -53,6 +53,14 @@ public class BinaryTreeTraversal {
         System.out.print("\t"+root.data);
         inOrderTraversal(root.right);
     }
+    
+    static void inOrderTraversal2(BinaryTree.BTNode root, ArrayList<Integer> data) {
+        if (root == null) return;
+
+        inOrderTraversal2(root.left, data);
+        data.add(root.data);
+        inOrderTraversal2(root.right, data);
+    }
 
     static void postOrderTraversal(BinaryTree.BTNode root) {
         if (root == null) return;
@@ -82,6 +90,13 @@ public class BinaryTreeTraversal {
         System.out.println("Post order traversal");
         postOrderTraversal(root);
         System.out.println();
+        
+        System.out.println("In order traversal MODIFIED");
+        ArrayList<Integer> list = new ArrayList<>();
+        inOrderTraversal2(root, list);
+        for (int i: list) {
+            System.out.print("\t"+i);
+        }
     }
 
 }
