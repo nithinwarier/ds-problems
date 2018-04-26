@@ -2,6 +2,9 @@ package com.androidians.sample.trees;
 
 import android.support.annotation.NonNull;
 
+/**
+* LCA means lowest common ancestor between two nodes n1 & n2
+*/
 public class LeastCommonAncestor {
 
     static class BTNode implements Comparable {
