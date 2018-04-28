@@ -69,6 +69,27 @@ public class BinaryTreeTraversal {
         postOrderTraversal(root.right);
         System.out.print("\t"+root.data);
     }
+    
+    static void preOrderTraversalIterative(BinaryTree.BTNode root) {
+        if (root == null) return;
+
+        Stack<BinaryTree.BTNode> stack = new Stack<>();
+        stack.add(root);
+
+        while (!stack.isEmpty()) {
+            BinaryTree.BTNode node = stack.peek();
+            System.out.println(node.data);
+            stack.pop();
+
+            if (node.right != null) {
+                stack.add(node.right);
+            }
+
+            if (node.left != null) {
+                stack.add(node.left);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         BinaryTree.BTNode root = insert(null, 10);
@@ -97,6 +118,10 @@ public class BinaryTreeTraversal {
         for (int i: list) {
             System.out.print("\t"+i);
         }
+        
+        System.out.println();
+        System.out.println("Pre order traversal iterative");
+        preOrderTraversalIterative(root);
     }
 
 }
