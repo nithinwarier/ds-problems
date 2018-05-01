@@ -36,5 +36,28 @@ public class RotateArray {
             System.out.print("\t"+result.get(i));
         }
     }
+    
+    private static int[] rotateArrayAlternative(int[] A, int K) {
+        if (A == null || A.length == 0) {
+            return A;
+        }
+        
+        if (K>A.length)
+            K = K%A.length;
+
+        int[] result = new int[A.length];
+
+        for (int i=0;i<K;i++) {
+            result[i] = A[A.length-K+i];
+        }
+
+        int j=0;
+        for(int i=K; i<A.length; i++){
+            result[i] = A[j];
+            j++;
+        }
+
+        return result;
+    }
 
 }
