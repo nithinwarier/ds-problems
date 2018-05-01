@@ -6,6 +6,7 @@ public class BinaryGap {
         System.out.println(binaryGap(529));
     }
 
+    // find the number of zeroes in the binary version
     static int binaryGap(int N) {
         int current = 0;
         int max = 0;
